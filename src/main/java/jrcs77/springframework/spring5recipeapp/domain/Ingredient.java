@@ -5,14 +5,16 @@ import java.math.BigDecimal;
 
 @Entity
 public class Ingredient {
-    @Id
+    @Id // in order to get an id from the database
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
     private BigDecimal amount;
 
-    //private UnitOfMeasure uom;
+    @OneToOne (fetch = FetchType.EAGER) //No cascade here, although Ingredient is the parent, because we want UnitofMeasure object to persist in case Ingredient is deleted
+                                        // fetch??
+    private UnitOfMeasure uom;
 
     @ManyToOne
     private Recipe recipe;
@@ -49,5 +51,11 @@ public class Ingredient {
         this.id = id;
     }
 
+    public UnitOfMeasure getUom() {
+        return uom;
+    }
 
+    public void setUom(UnitOfMeasure uom) {
+        this.uom = uom;
+    }
 }
