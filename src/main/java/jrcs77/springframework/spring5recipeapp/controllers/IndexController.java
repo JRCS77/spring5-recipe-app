@@ -42,7 +42,7 @@ public class IndexController {
     @RequestMapping({"", "/", "/index"})
     public String getIndexPage(Model model) {
 
-        model.addAttribute("recipes", recipeService.getRecipes());
+        model.addAttribute("recipes", recipeService.getRecipes()); //in index.html: <tr th:each="recipe : ${recipes}">
 
         return "index"; //return "index" must be the same as the folder´s name
     }

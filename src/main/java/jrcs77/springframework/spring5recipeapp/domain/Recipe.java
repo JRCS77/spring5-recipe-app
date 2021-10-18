@@ -41,7 +41,6 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>(); // = new HashSet<>() is the initialization in order to avoid null pointer error
 
-
     public Long getId() {
         return id;
     }
@@ -114,6 +113,14 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     public Byte[] getImage() {
         return image;
     }
@@ -128,20 +135,6 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
-    }
-
-    /*public Recipe addIngredient(Ingredient ingredient){
-        ingredient.setRecipe(this);
-        this.ingredients.add(ingredient);
-        return this;
-    }*/
-
-    public Set<Ingredient> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
     }
 
     public Set<Category> getCategories() {
